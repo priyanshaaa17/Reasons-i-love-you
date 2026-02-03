@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Reason Jar 🤍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #fff 0%, #fde8ef 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #444;
+    }
+
+    .container {
+      text-align: center;
+      padding: 30px 20px;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    h1 {
+      font-weight: 400;
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    .jar {
+      width: 220px;
+      height: 300px;
+      margin: 0 auto 30px;
+      border: 3px solid #f3b6c8;
+      border-radius: 20px 20px 35px 35px;
+      position: relative;
+      cursor: pointer;
+      background: rgba(255,255,255,0.6);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+
+    .jar::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 25px;
+      border: 3px solid #f3b6c8;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .chits {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 200px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-content: flex-end;
+      justify-content: center;
+    }
+
+    .chit {
+      width: 32px;
+      height: 18px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .note {
+      background: #fff;
+      padding: 22px 18px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      font-size: 15px;
+      line-height: 1.5;
+      min-height: 80px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease;
+    }
+
+    .note.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>for days like this 🤍</h1>
+    <p>take one whenever you want.</p>
+
+    <div class="jar" onclick="drawReason()">
+      <div class="chits">
+        <div class="chit"></div><div class="chit"></div><div class="chit"></div>
+        <div class="chit"></div><div class="chit"></div><div class="chit"></div>
+        <div class="chit"></div><div class="chit"></div><div class="chit"></div>
+        <div class="chit"></div><div class="chit"></div><div class="chit"></div>
+        <div class="chit"></div><div class="chit"></div><div class="chit"></div>
+      </div>
+    </div>
+
+    <div id="note" class="note"></div>
+
+    <footer>made with so much love</footer>
+  </div>
+
+  <script>
+    const reasons = [
+      "you always understand me.",
+      "you take my side. always.",
+      "you make playlists for me just because.",
+      "you loved me even when i didn’t.",
+      "you calm me down every time.",
+      "you send me cute reels and remind me how loved i am.",
+      "you make me feel comfortable and safe.",
+      "you defend my name even when i’m not there.",
+      "you send me chocolates for no reason.",
+      "you listen to my endless yapping.",
+      "you support me in everything.",
+      "you feel like comfort in chaos.",
+      "you’re always there when i need you.",
+      "you write poetry for me.",
+      "you never gave up on me.",
+      "you always make me laugh.",
+      "you say sorry even when you’re not wrong.",
+      "proud joru ka gulaam energy.",
+      "you feel like home.",
+      "your smile.",
+      "your hair.",
+      "how thoughtful you are.",
+      "you remember the smallest details.",
+      "you’re my love and my best friend.",
+      "you made me believe in love.",
+      "you give the best compliments.",
+      "you know me better than anyone.",
+      "you never get tired of me.",
+      "you want a future with me.",
+      "you love me the way i want to be loved.",
+      "we can talk about anything.",
+      "i smile the most around you.",
+      "you choose me. every time.",
+      "you show up.",
+      "you stay.",
+      "you make life softer.",
+      "you make ordinary days better.",
+      "you’re my safest place.",
+      "you make me feel seen.",
+      "you never make me feel too much.",
+      "you love me quietly and loudly.",
+      "you feel like certainty.",
+      "you feel like always.",
+      "you are my person.",
+      "even on hard days, it’s still you.",
+      "with everyone in the world, i’d still choose you.",
+      "you are my forever favorite.",
+      "you make me feel loved — always."
+    ];
+
+    let remaining = [...reasons];
+
+    function drawReason() {
+      if (remaining.length === 0) {
+        remaining = [...reasons];
+      }
+      const index = Math.floor(Math.random() * remaining.length);
+      const text = remaining.splice(index, 1)[0];
+
+      const note = document.getElementById('note');
+      note.classList.remove('show');
+
+      setTimeout(() => {
+        note.textContent = text;
+        note.classList.add('show');
+      }, 200);
+    }
+  </script>
+</body>
+</html>
